@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LAN Issue 02</title>
+<meta name="description" content="Local Area Network, Issue 02 (October 2026): stories from the parallel society, transcribed as Markdown for people and agents.">
+<link rel="alternate" type="text/markdown" href="issue-02.md">
+<style>
+  :root { --bg:#fbfaf7; --fg:#161616; --muted:#666; --rule:#d9d6cf; --code:#efede7; --link:#1a4fd6; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg:#141414; --fg:#e8e6e1; --muted:#9a9790; --rule:#333; --code:#222; --link:#8cb0ff; }
+  }
+  :root[data-theme="dark"] { --bg:#141414; --fg:#e8e6e1; --muted:#9a9790; --rule:#333; --code:#222; --link:#8cb0ff; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:17px/1.6 Georgia, "Times New Roman", serif; }
+  main { max-width: 44rem; margin: 0 auto; padding: 2rem 16px 4rem; }
+  .bar { font: 13px/1.5 ui-monospace, Menlo, monospace; color: var(--muted); border-bottom: 1px solid var(--rule); padding-bottom: 1rem; margin-bottom: 2rem; overflow-wrap: anywhere; }
+  .bar a { color: var(--link); }
+  h1, h2, h3 { font-family: Georgia, serif; line-height: 1.2; }
+  h1 { font-size: 2rem; border-top: 2px solid var(--fg); padding-top: 1rem; margin-top: 3rem; }
+  h1:first-child { border-top: 0; margin-top: 0; }
+  h2 { font-size: 1.45rem; margin-top: 2.5rem; }
+  a { color: var(--link); overflow-wrap: anywhere; }
+  blockquote { margin: 1rem 0; padding: .25rem 1rem; border-left: 3px solid var(--rule); color: var(--muted); font-style: italic; }
+  code, pre { font: 14px/1.5 ui-monospace, Menlo, monospace; background: var(--code); }
+  code { padding: .1em .3em; border-radius: 3px; }
+  pre { padding: .75rem 1rem; overflow-x: auto; border-radius: 4px; }
+  pre code { padding: 0; background: none; }
+  .table { overflow-x: auto; }
+  table { border-collapse: collapse; font-size: 14px; width: 100%; }
+  th, td { border-bottom: 1px solid var(--rule); padding: .4rem .5rem; text-align: left; vertical-align: top; }
+  hr { border: 0; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+  .meta { font: 13px/1.5 ui-monospace, Menlo, monospace; color: var(--muted); white-space: pre-wrap; background: var(--code); padding: .75rem 1rem; border-radius: 4px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="bar">
+    Raw Markdown (for agents): <a href="issue-02.md">issue-02.md</a><br>
+    Logos Storage CID: <code>zDvZRwzmBTvsGyREoAZwsszvTwLLuwRhF4E2SMb9McZx4iJW9KjD</code>
+  </div>
+  <div id="doc">Loading…</div>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script>
+  fetch('issue-02.md').then(r => r.text()).then(md => {
+    let meta = '';
+    md = md.replace(/^---\n([\s\S]*?)\n---\n/, (_, m) => { meta = m; return ''; });
+    const el = document.getElementById('doc');
+    el.innerHTML = marked.parse(md);
+    el.querySelectorAll('table').forEach(t => { const w = document.createElement('div'); w.className = 'table'; t.replaceWith(w); w.appendChild(t); });
+    if (meta) { const p = document.createElement('pre'); p.className = 'meta'; p.textContent = meta; el.prepend(p); }
+  }).catch(() => { document.getElementById('doc').innerHTML = '<p><a href="issue-02.md">Open issue-02.md</a></p>'; });
+</script>
+</body>
+</html>
